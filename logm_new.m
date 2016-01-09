@@ -87,7 +87,7 @@ function [X, s, m] = logm_new (A, maxsqrt)
   endif
   T0 = T;
   if (any ( imag (diag (T)) == 0 & real (diag (T)) <= 0 ))
-    error  ('A must not have nonpositive real eigenvalues!')
+    warning ('A must not have nonpositive real eigenvalues!')
   endif
   p = 0;
   s0 = opt_cost (diag (T)); 
