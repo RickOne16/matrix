@@ -160,10 +160,6 @@ function [X, s, m] = logm_new (A, maxsqrt)
   endfor
 
   X = Q*X*Q';
-  if (isreal(A))
-  X = real (X); 
-  endif
-
   
 ## Nested functions
 
