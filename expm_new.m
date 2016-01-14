@@ -522,8 +522,8 @@ function X = expmT2by2 (A)
     x12 = A (1, 2)*(exp (a2)-exp (a1))/(a2-a1);
   endif
 
-  X = [exp (a1)  x12
-         0      exp (a2)];
+  X = [exp(a1)  x12
+         0      exp(a2)];
 
 endfunction
 
