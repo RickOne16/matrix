@@ -28,7 +28,7 @@ function [F, n_swaps, n_calls, terms, ind, T] = funm (A, fun, delta, tol, prnt, 
 %        T:        the re-ordered Schur form.
 
   if (isequal(fun,@cos) || isequal(fun,'cos'))
-    fun = @(fun_cos; 
+    fun = @fun_cos; 
   endif
   if (isequal(fun,@sin) || isequal(fun,'sin'))
     fun = @fun_sin; 
