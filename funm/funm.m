@@ -543,11 +543,14 @@ function X = sylv_tri(T,U,B)
   m = length(T);
   n = length(U);
   X = zeros(m,n);
-
 ##Forward substitution.
   for i = 1:n
     X(:,i) = (T + U(i,i)*eye(m)) \ (B(:,i) - X(:,1:i-1)*U(1:i-1,i));
   endfor
 endfunction
-%!assert (funm(10,@log), log (10),eps)
-%!assert (funm (([1 -1 -1;0 1 -1; 0 0 1]),@log), [0 -1 -1.5; 0 0 -1; 0 0 0], 1e-5)
+#####################################################
+#####################################################
+%!assert (funm(10,@log), log (10))
+%!assert (funm ([1 2;3 4], @sin), [-0.4656   -0.1484;-0.2226   -0.6882], 4e-5)
+%!assert (funm ([1 2;3 4], @cos), [ 0.8554   -0.1109;-0.1663    0.6891], 3e-5)
+%!assert (funm ([1 2;3 4], @exp), [51.9690   74.7366;112.1048  164.0738], 5e-5)
