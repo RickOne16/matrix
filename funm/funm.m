@@ -193,11 +193,6 @@ function f = fun_sin(x,k)
   endif
   endif
 endfunction
-function f = fun_log (x,k)
-##FUN_LOG
-##Only to be called for plain log evaluation.
-  f = log(x);
-endfunction
 
 function m = blocking(A,delta,showplot)
 ##BLOCKING  Produce blocking pattern for block Parlett recurrence.
@@ -369,7 +364,7 @@ function [F, n_terms] = funm_atom (T, fun, tol, prnt)
 
   n = length (T);
   if (n == 1)
-    F = feval (fun, T, 0); 
+    F = feval(fun, T, 0); 
     n_terms = 1; 
     return
   endif
@@ -433,7 +428,11 @@ function [F, n_terms] = funm_atom (T, fun, tol, prnt)
   endfor
   n_terms = -1;
 endfunction
-
+function f = fun_log(x,k)
+##FUN_LOG
+##Only to be called for plain log evaluation.
+    f = log(x);
+endfunction
 
 
 function [X, iter] = logm_isst(T, prnt)
@@ -458,7 +457,7 @@ function [X, iter] = logm_isst(T, prnt)
   n = length(T);
 
   if (any( imag(diag(T)) == 0 & real(diag(T)) <= 0 ))
-    error('A must not have nonpositive real eigenvalues!')
+    warning('A must not have nonpositive real eigenvalues!')
   endif
 
   if (n == 1)
@@ -547,3 +546,4 @@ endfunction
 %!assert (funm ([1 2;3 4], @sin), [-0.4656   -0.1484;-0.2226   -0.6882], 4e-5)
 %!assert (funm ([1 2;3 4], @cos), [ 0.8554   -0.1109;-0.1663    0.6891], 3e-5)
 %!assert (funm ([1 2;3 4], @exp), [51.9690   74.7366;112.1048  164.0738], 5e-5)
+%!assert (funm ([1 2;3 4],@logm), [ -0.35044 + 2.39112i   0.92935 - 1.09376i; 1.39403 - 1.64064i   1.04359 + 0.75047i],1e-5)
