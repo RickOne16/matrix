@@ -20,13 +20,6 @@ function [F, n_swaps, n_calls, terms, ind, T] = funm (A, fun, delta, tol, prnt, 
 ##along with Octave; see the file COPYING.  If not, see
 ##<http://www.gnu.org/licenses/>.
 
-##Part of this code was originally distributed in the accompanying files
-##of "2009.9: Awad H. Al-Mohy and Nicholas J. Higham (2009) A New Scaling
-##and Squaring Algorithm for the Matrix Exponential. SIAM Journal On Matrix
-##Analysis and Applications., 31 (3). pp. 970-989. ISSN 1095-7162"
-
-##Copyright (c) Awad H. Al-Mohy and Nicholas J. Higham, April 20, 2010.
-
 ##Redistribution and use in source and binary forms, with or without
 ##modification, are permitted provided that the following conditions are met:
 
