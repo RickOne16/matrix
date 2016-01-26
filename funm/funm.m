@@ -76,7 +76,16 @@ function [F, n_swaps, n_calls, terms, ind, T] = funm (A, fun, delta, tol, prnt, 
   if (isequal (fun, @exp) || isequal (fun, 'exp'))
     fun = @fun_exp; 
   endif
-
+  if (isequal (fun, @cosh) || isequal (fun, 'cosh'))
+    fun = @fun_cosh;
+  endif
+  if (isequal (fun, @sinh) || isequal (fun, 'sinh'))
+    fun = @fun_sinh;
+  endif 
+  if (isequal (fun, @log) || isequal (fun, 'log'))
+    fun = @fun_log;
+  endif  
+  
   if (nargin < 3 || isempty (delta))
     delta = 0.1; 
   endif
@@ -171,6 +180,24 @@ function f = fun_cos (x, k)
     f = cos(x)*(-1)^g; 
   endif
   endif 
+endfunction
+
+function f = fun_cosh (x,k)
+##fun_cosh
+  if (mod(k,2))
+    f = sinh(x);
+  else
+    f = cosh(x);
+  endif
+endfunction
+
+function f = fun_sinh (x,k)
+##fun_sinh
+  if (mod(k,2))
+   f = cosh(x);
+  else
+   f = sinh(x);
+  endif
 endfunction
 
 function f = fun_exp(x,k)
@@ -428,7 +455,7 @@ function [F, n_terms] = funm_atom (T, fun, tol, prnt)
   endfor
   n_terms = -1;
 endfunction
-function f = fun_log(x,k)
+function f = fun_log(x)
 ##FUN_LOG
 ##Only to be called for plain log evaluation.
     f = log(x);
@@ -547,3 +574,5 @@ endfunction
 %!assert (funm ([1 2;3 4], @cos), [ 0.8554   -0.1109;-0.1663    0.6891], 3e-5)
 %!assert (funm ([1 2;3 4], @exp), [51.9690   74.7366;112.1048  164.0738], 5e-5)
 %!assert (funm ([1 2;3 4],@logm), [ -0.35044 + 2.39112i   0.92935 - 1.09376i; 1.39403 - 1.64064i   1.04359 + 0.75047i],1e-5)
+%!assert (funm ([1 2;3 4], @sinh), [25.4317   37.6201;56.4301   81.8618], 4e-5)
+%!assert (funm ([1 2;3 4], @cosh), [26.5372   37.1165;55.6747   82.2120], 5e-5)
