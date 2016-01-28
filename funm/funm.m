@@ -130,7 +130,7 @@ function [F, n_swaps, n_calls, terms, ind, T] = funm (A, fun, delta, tol, prnt, 
   [M, ind, n_swaps] = swapping (m);
   n_calls = size (M,1);
   if (n_calls > 0)            ## If there are swaps to do...
-    [U, T] = ordschur(U, T, M);  ## MEX file
+    [U, T] = ordschur(U, T, M);  ## ordschur
   endif
 
   m = length (ind);
