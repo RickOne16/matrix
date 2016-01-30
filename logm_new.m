@@ -176,7 +176,7 @@ function s = opt_cost (d)
   endwhile
 endfunction
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
+##################################
 function S = logm_pf (A, m)
 ##LOGM_PF   Pade approximation to matrix log by partial fraction expansion.
 ##   LOGM_PF(A,m) is an [m/m] Pade approximant to LOG(EYE(SIZE(A))+A).
