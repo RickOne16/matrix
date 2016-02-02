@@ -130,7 +130,7 @@ function [F, n_swaps, n_calls, terms, ind, T] = funm (A, fun, delta, tol, prnt, 
   [M, ind, n_swaps] = swapping (m);
   n_calls = size (M,1);
   if (n_calls > 0)            ## If there are swaps to do...
-    [U, T] = ordschur(U, T, M);  ## ordschur
+    [U, T] = ordschur(U, T, M);  ## ordschur 
   endif
 
   m = length (ind);
@@ -567,6 +567,7 @@ function X = sylv_tri(T,U,B)
     X(:,i) = (T + U(i,i)*eye(m)) \ (B(:,i) - X(:,1:i-1)*U(1:i-1,i));
   endfor
 endfunction
+
 #####################################################
 #####################################################
 %!assert (funm(10,@log), log (10))
@@ -576,3 +577,9 @@ endfunction
 %!assert (funm ([1 2;3 4],@logm), [ -0.35044 + 2.39112i   0.92935 - 1.09376i; 1.39403 - 1.64064i   1.04359 + 0.75047i],1e-5)
 %!assert (funm ([1 2;3 4], @sinh), [25.4317   37.6201;56.4301   81.8618], 4e-5)
 %!assert (funm ([1 2;3 4], @cosh), [26.5372   37.1165;55.6747   82.2120], 5e-5)
+
+%!test
+%! u = [1 2;3 4];
+%! t = [2 3;4 5];
+%! ea = [1 2;3 4];
+%! assert(ordschur(u,t,[0,1]), ea)
