@@ -14,7 +14,7 @@ function [] = gmres ( A, b , x0 , m )
   endif
 
  [size_m, size_n]  =  size (A);
- if ( size_m != size_n ) error ( " enter a square matrix A ");
+ if ( size_m ~= size_n ) error ( ' enter a square matrix A ');
  endif
   
  V = zeros( n, m+1 );
