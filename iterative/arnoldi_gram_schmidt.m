@@ -8,10 +8,10 @@ function [H,V] = arnoldi_gram_schmidt(A,v,m)
   endif
 
  [size_m, size_n]  =  size (A);
- if ( size_m != size_n ) error ( ' enter a square matrix A ');
+ if ( size_m ~= size_n ) error ( ' enter a square matrix A ');
  endif
 
- if ( norm(v) != 1 ) error (' enter unity norm vector v ' );
+ if ( norm(v) ~= 1 ) error (' enter unity norm vector v ' );
  endif
   
  V = zeros( n, m+1 );
