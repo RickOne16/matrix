@@ -8,10 +8,10 @@ function [H,V] = arnoldi_gram_schmidt(A,v,m)
   endif
 
  [size_m, size_n]  =  size (A);
- if ( size_m != size_n ) error ( " enter a square matrix A ");
+ if ( size_m != size_n ) error ( ' enter a square matrix A ');
  endif
 
- if ( norm(v) != 1 ) error (" enter unity norm vector v" );
+ if ( norm(v) != 1 ) error (' enter unity norm vector v ' );
  endif
   
  V = zeros( n, m+1 );
@@ -31,7 +31,7 @@ function [H,V] = arnoldi_gram_schmidt(A,v,m)
       endfor
     
       H(j+1,j) = norm(w);
-      if(!H(j+1,j)) error (" H is not an upper hessenberg matrix!");
+      if(!H(j+1,j)) error (' H is not an upper hessenberg matrix! ');
       endif
 
       V(:,j+1) = w / H(j+1,j);
